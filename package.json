@@ -1,0 +1,12 @@
+{
+  "name": "system-activity-monitor",
+  "version": "0.1.0",
+  "description": "System activity monitor for EVE Online",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Dak Ralter",
+  "license": "MIT",
+  "private": true
+}
