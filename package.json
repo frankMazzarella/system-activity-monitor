@@ -8,5 +8,8 @@
   },
   "author": "Dak Ralter",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "request": "^2.88.0"
+  }
 }
