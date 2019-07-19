@@ -4,12 +4,22 @@
   "description": "System activity monitor for EVE Online",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "node app",
+    "lint": "eslint .",
+    "watch": "nodemon",
+    "build-system-data": "node ./util/buildSystemData"
   },
   "author": "Dak Ralter",
   "license": "MIT",
   "private": true,
   "dependencies": {
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
+    "js-yaml": "^3.13.1",
+    "nodemon": "^1.19.1"
   }
 }
