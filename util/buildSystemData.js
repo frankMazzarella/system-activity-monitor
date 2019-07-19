@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const jsYaml = require('js-yaml');
+const jsYaml = require('js-yaml'); // eslint-disable-line import/no-extraneous-dependencies
 
 // Set to the location of the EVE Static Data Export (SDE)
 const eveStaticExportDirectory = path.resolve(__dirname, '../');
@@ -16,7 +16,14 @@ fs.readdirSync(newEdenDirectory).forEach((region) => {
         const systemDirectory = path.resolve(eveStaticExportDirectory, newEdenDirectory, region, constellation, system);
         if (fs.lstatSync(systemDirectory).isDirectory()) {
           const systemData = jsYaml.safeLoad(fs.readFileSync(path.resolve(systemDirectory, 'solarsystem.staticdata')));
-          systemIndex[systemData.solarSystemID] = { name: system, security: systemData.security };
+          systemIndex[systemData.solarSystemID] = {
+            name: system,
+            security: systemData.security,
+            npcKills: 0,
+            podKills: 0,
+            shipKills: 0,
+            jumps: 0,
+          };
         }
       });
     }

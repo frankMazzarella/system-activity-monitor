@@ -1,15 +1,15 @@
-const request = require('request');
+const solarSystemsService = require('./service/solar-systems.service');
+const eveApiService = require('./service/eve-api.service');
 
-console.log('EVE Online system activity monitor is running');
+// const systems = solarSystemsService.getSystems();
+// TODO: needs a logger
 
-request.get('https://esi.evetech.net/latest/universe/system_jumps/?datasource=tranquility', (error, response, body) => {
-  console.log(JSON.parse(body));
-});
+eveApiService.getSystemJumps()
+  .then(systemJumps => solarSystemsService.updateSystemJumps(systemJumps))
+  .then(() => process.stdout.write('updated system jumps\n'))
+  .catch(error => new Error(error));
 
-request.get('https://esi.evetech.net/latest/universe/systems/?datasource=tranquility', (error, response, body) => {
-  console.log(JSON.parse(body));
-});
-
-request.get('https://esi.evetech.net/latest/universe/system_kills/?datasource=tranquility', (error, response, body) => {
-  console.log(JSON.parse(body));
-});
+eveApiService.getSystemKills()
+  .then(systemKills => solarSystemsService.updateSystemKills(systemKills))
+  .then(() => process.stdout.write('updated system kills\n'))
+  .catch(error => new Error(error));
