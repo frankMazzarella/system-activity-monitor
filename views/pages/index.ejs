@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <% include ../partials/head %>
+  <% include ../partials/head %>
 </head>
+
 <body class="container">
 
-<main>
+  <main>
     <div class="jumbotron">
-        <h1>System Activity Monitor</h1>
-        <pre><%= JSON.stringify(systems) %></pre>
+      <h1>System Activity Monitor</h1>
+      <table id="system-table" class="display" width="100%"></table>
+      <script>
+        const dataSet = [
+          ['inaro', 4, 5, 6, 7, 6],
+          ['jita', 3, 4, 5, 6, 7],
+          ['amarr', 3, 5, 7, 7, 8],
+          ['sobaseki', 3, 4, 5, 6, 6],
+          ['oichiya', 3, 4, 4, 5, 6],
+        ]
+        $(document).ready(function () {
+          $('#system-table').DataTable({
+            data: dataSet,
+            columns: [
+              { title: 'Solar System' },
+              { title: 'Security Status' },
+              { title: 'Jumps' },
+              { title: 'Ship Kills' },
+              { title: 'Pod Kills' },
+              { title: 'NPC Kills' },
+            ],
+          });
+        });
+      </script>
     </div>
-</main>
+  </main>
 
-<footer>
+  <footer>
     <% include ../partials/footer %>
-</footer>
+  </footer>
 
 </body>
+
 </html>
