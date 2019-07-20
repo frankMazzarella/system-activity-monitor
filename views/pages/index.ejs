@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <% include ../partials/head %>
+  <% include ../partials/head %>
 </head>
+
 <body class="container">
 
-<main>
+  <main>
     <div class="jumbotron">
-        <h1>System Activity Monitor</h1>
-        <pre><%= JSON.stringify(systems) %></pre>
+      <h1>System Activity Monitor</h1>
+      <table id="system-table" class="display" width="100%"></table>
+      <script>
+        $(document).ready(function () {
+          $('#system-table').DataTable({
+            data: <%- systemData %>,
+            columns: [
+              { title: 'Solar System' },
+              { title: 'Security Status' },
+              { title: 'Jumps' },
+              { title: 'Ship Kills' },
+              { title: 'Pod Kills' },
+              { title: 'NPC Kills' },
+            ],
+          });
+        });
+      </script>
     </div>
-</main>
+  </main>
 
-<footer>
+  <footer>
     <% include ../partials/footer %>
-</footer>
+  </footer>
 
 </body>
+
 </html>

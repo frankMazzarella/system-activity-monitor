@@ -32,7 +32,21 @@ function updateSystemKills(systemKills) {
   });
 }
 
+function getSystemData() {
+  return Object.keys(systemData).map((systemId) => {
+    const system = systemData[systemId];
+    return [
+      system.name,
+      system.security,
+      system.jumps,
+      system.shipKills,
+      system.podKills,
+      system.npcKills,
+    ];
+  });
+}
+
 // TODO: is this allowing system data to be modified? its probably sending by reference.
-module.exports.getSystems = () => systemData;
+module.exports.getSystemData = getSystemData;
 module.exports.updateSystemJumps = updateSystemJumps;
 module.exports.updateSystemKills = updateSystemKills;
