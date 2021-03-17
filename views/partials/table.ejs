@@ -13,9 +13,9 @@
         { title: 'NPC Kills' },
       ],
     });
-    const fiveMinutes = 1000 * 60 * 5;
+    const oneMinute = 1000 * 60 * 1;
     setInterval(() => {
       $systemTable.ajax.reload(null, false); //null, false prevents user paging reset on reload
-    }, fiveMinutes);
+    }, oneMinute);
   });
 </script>

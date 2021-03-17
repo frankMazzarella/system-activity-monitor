@@ -29,6 +29,6 @@ function querySystemData() {
     .catch(error => new Error(error));
 }
 
-const tenMinutes = 1000 * 60 * 10;
-setInterval(querySystemData, tenMinutes);
+const oneMinute = 1000 * 60 * 1;
+setInterval(querySystemData, oneMinute);
 querySystemData();
