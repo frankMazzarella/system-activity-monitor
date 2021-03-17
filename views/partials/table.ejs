@@ -1,0 +1,21 @@
+<table id="system-table" class="display" width="100%"></table>
+<script>
+  $(document).ready(function () {
+    const $systemTable = $('#system-table').DataTable({
+      ajax: '/systemdata',
+      order: [ 2, 'desc' ],
+      columns: [
+        { title: 'Solar System' },
+        { title: 'Security Status' },
+        { title: 'Jumps' },
+        { title: 'Ship Kills' },
+        { title: 'Pod Kills' },
+        { title: 'NPC Kills' },
+      ],
+    });
+    const oneMinute = 1000 * 60 * 1;
+    setInterval(() => {
+      $systemTable.ajax.reload(null, false); //null, false prevents user paging reset on reload
+    }, oneMinute);
+  });
+</script>

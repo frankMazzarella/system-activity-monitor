@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const jsYaml = require('js-yaml'); // eslint-disable-line import/no-extraneous-dependencies
 
-// Set to the location of the EVE Static Data Export (SDE)
+// Extract the EVE Static Data Export (SDE) to the root of this project
+// https://developers.eveonline.com/resource/resources
 const eveStaticExportDirectory = path.resolve(__dirname, '../');
 
 const systemIndex = {};
