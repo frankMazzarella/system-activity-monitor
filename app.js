@@ -11,11 +11,9 @@ const port = process.env.PORT || 3000;
 app.use(compression());
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
-app.get('/', (req, res) => {
-  res.render('pages/index', { systemData: JSON.stringify(solarSystemsService.getSystemData()) });
-});
+app.get('/', (req, res) => res.render('pages/index'));
 app.get('/healthcheck', (req, res) => res.send({ uptime: process.uptime() }));
-app.get('/systemdata', (req, res) => res.send(solarSystemsService.getSystemData()));
+app.get('/systemdata', (req, res) => res.send({ data: solarSystemsService.getSystemData() }));
 app.listen(port, () => process.stdout.write(`express is running on port ${port}\n`));
 
 function querySystemData() {

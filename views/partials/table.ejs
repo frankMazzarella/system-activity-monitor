@@ -1,8 +1,8 @@
 <table id="system-table" class="display" width="100%"></table>
 <script>
   $(document).ready(function () {
-    $('#system-table').DataTable({
-      data: <%- systemData %>,
+    const $systemTable = $('#system-table').DataTable({
+      ajax: '/systemdata',
       order: [ 2, 'desc' ],
       columns: [
         { title: 'Solar System' },
@@ -13,5 +13,9 @@
         { title: 'NPC Kills' },
       ],
     });
+    const fiveMinutes = 1000 * 60 * 5;
+    setInterval(() => {
+      $systemTable.ajax.reload(null, false); //null, false prevents user paging reset on reload
+    }, fiveMinutes);
   });
 </script>
