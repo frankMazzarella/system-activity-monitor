@@ -1,0 +1,17 @@
+<table id="system-table" class="display" width="100%"></table>
+<script>
+  $(document).ready(function () {
+    $('#system-table').DataTable({
+      data: <%- systemData %>,
+      order: [ 2, 'desc' ],
+      columns: [
+        { title: 'Solar System' },
+        { title: 'Security Status' },
+        { title: 'Jumps' },
+        { title: 'Ship Kills' },
+        { title: 'Pod Kills' },
+        { title: 'NPC Kills' },
+      ],
+    });
+  });
+</script>

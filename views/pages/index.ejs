@@ -1,38 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <% include ../partials/head %>
 </head>
-
 <body class="container">
-
   <main>
     <div class="jumbotron">
       <h1>System Activity Monitor</h1>
-      <table id="system-table" class="display" width="100%"></table>
-      <script>
-        $(document).ready(function () {
-          $('#system-table').DataTable({
-            data: <%- systemData %>,
-            columns: [
-              { title: 'Solar System' },
-              { title: 'Security Status' },
-              { title: 'Jumps' },
-              { title: 'Ship Kills' },
-              { title: 'Pod Kills' },
-              { title: 'NPC Kills' },
-            ],
-          });
-        });
-      </script>
+      <h5>Data shown for last hour</h5>
+      <br />
+      <% include ../partials/table %>
     </div>
   </main>
-
   <footer>
     <% include ../partials/footer %>
   </footer>
-
 </body>
-
 </html>

@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 app.get('/healthcheck', (req, res) => res.send({ uptime: process.uptime() }));
 app.get('/systemdata', (req, res) => res.send(solarSystemsService.getSystemData()));
-app.listen(port, () => process.stdout.write('express is running\n'));
+app.listen(port, () => process.stdout.write(`express is running on port ${port}\n`));
 
 function querySystemData() {
   process.stdout.write('querying for system data\n');
