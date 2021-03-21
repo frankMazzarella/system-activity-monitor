@@ -6,9 +6,11 @@
   $(document).ready(function () {
     const $systemTable = $('#system-table').DataTable({
       ajax: '/systemdata',
-      order: [ 2, 'desc' ],
+      order: [ 4, 'desc' ],
       columns: [
         { title: 'Solar System' },
+        { title: 'Region' },
+        { title: 'Constellation' },
         { title: 'Security Status' },
         { title: 'Jumps' },
         { title: 'Ship Kills' },

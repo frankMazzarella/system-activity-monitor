@@ -37,6 +37,8 @@ function getSystemData() {
     const system = systemData[systemId];
     return [
       system.name,
+      system.region,
+      system.constellation,
       system.security,
       system.jumps,
       system.shipKills,
