@@ -18,6 +18,8 @@ fs.readdirSync(newEdenDirectory).forEach((region) => {
         if (fs.lstatSync(systemDirectory).isDirectory()) {
           const systemData = jsYaml.safeLoad(fs.readFileSync(path.resolve(systemDirectory, 'solarsystem.staticdata')));
           systemIndex[systemData.solarSystemID] = {
+            region,
+            constellation,
             name: system,
             security: systemData.security,
             npcKills: 0,

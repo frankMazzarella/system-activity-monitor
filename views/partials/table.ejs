@@ -1,21 +1,35 @@
 <table id="system-table" class="display" width="100%"></table>
+<p class="text-muted">Last updated <span id="updated-time"></span></p>
 <script>
+  const $updatedTime = $('#updated-time');
+
   $(document).ready(function () {
     const $systemTable = $('#system-table').DataTable({
       ajax: '/systemdata',
-      order: [ 2, 'desc' ],
+      order: [ 4, 'desc' ],
       columns: [
         { title: 'Solar System' },
+        { title: 'Region' },
+        { title: 'Constellation' },
         { title: 'Security Status' },
         { title: 'Jumps' },
         { title: 'Ship Kills' },
         { title: 'Pod Kills' },
         { title: 'NPC Kills' },
       ],
+      initComplete: updateTimestamp,
     });
     const oneMinute = 1000 * 60 * 1;
     setInterval(() => {
       $systemTable.ajax.reload(null, false); //null, false prevents user paging reset on reload
+      updateTimestamp();
     }, oneMinute);
   });
+
+  function updateTimestamp() {
+    const hours = new Date().getHours();
+    const minutes = new Date().getMinutes();
+    const time = `${hours}:${minutes}`;
+    $updatedTime.text(time);
+  }
 </script>
