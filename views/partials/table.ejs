@@ -21,14 +21,13 @@
     });
     const oneMinute = 1000 * 60 * 1;
     setInterval(() => {
-      $systemTable.ajax.reload(null, false); //null, false prevents user paging reset on reload
-      updateTimestamp();
+      $systemTable.ajax.reload(updateTimestamp, false); //null, false prevents user paging reset on reload
     }, oneMinute);
   });
 
   function updateTimestamp() {
     const hours = new Date().getHours();
-    const minutes = new Date().getMinutes();
+    const minutes = new Date().getMinutes().toString().padStart(2, '0');
     const time = `${hours}:${minutes}`;
     $updatedTime.text(time);
   }
